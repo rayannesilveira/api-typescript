@@ -1,0 +1,113 @@
+{
+  "openapi": "3.0.0",
+  "info":{
+    "title": "Documentação com Swagger",
+    "description": "Essa é uma api com typescript.",
+    "version":"1.0.0"
+  },
+  "paths":{
+    "/produto":{
+      "post":{
+        "tags": [
+          "Produto"
+        ],
+        "summary": "Create Produto",
+        "description": "Essa é uma descrição do método POST.",
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "type": "object",
+                "properties":{
+                  "nome":{
+                    "type": "string"
+                  },
+                  "preco":{
+                    "type": "number"
+                  },
+                  "quantidade":{
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "201":{
+            "description": "Criado com sucesso."
+          },
+          "422":{
+            "description":"Produto já existe."
+          }
+        }
+      }
+    },
+    
+    "/categoria": {
+      "post": {
+        "tags": [
+          "Categoria"
+        ],
+        "summary": "Cria uma categoria",
+        "description": "Cria uma nova categoria no sistema",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "descricao": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "422": {
+            "description": "Categoria já existe."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Categoria"
+        ],
+        "summary": "Listar todas as categorias",
+        "description": "Lista todas as categorias no sistema",
+        "responses": {
+          "200": {
+            "description": "Sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "itens": {
+                    "type": "object",
+                    "properties": {
+                      "nome": {
+                        "type": "string"
+                      },
+                      "descricao":{
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
