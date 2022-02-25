@@ -9,9 +9,14 @@
 - dotenv
 - ts-node-dev
 
+### Criar arquivo .env na raiz:
+```bash
+DB_CONN_STRING=mongodb+srv://COLOCARNOMEUSUARIO:COLOCARSENHA@cluster0.qhjsx.mongodb.net/COLOCARNOMEDABASEDEDADOS?retryWrites=true&w=majority
+DB_NAME="dbapi"
+```
 
 
-Instalar as dependencias:
+### Instalar as dependencias:
 
 ```bash
 $ yarn install
@@ -30,6 +35,6 @@ ou
 $ npm dev
 ```
 
-Acessar a documentação da API utilizando swagger:
+### Acessar a documentação da API utilizando swagger:
 
 [http://localhost:3131/api-docs](http://localhost:3131/api-docs)
