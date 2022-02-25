@@ -9,8 +9,8 @@ class GetAllCategoriasController{
   constructor(createCategoriaService: GetAllCategoriasService){
     this.getAllCategoriasService = createCategoriaService;
   }
-  handle(request: Request, response: Response): Response{
-    const allCategorias = this.getAllCategoriasService.execute();
+  async handle(request: Request, response: Response): Promise<Response>{
+    const allCategorias = await this.getAllCategoriasService.execute();
 
     return response.status(200).json(allCategorias);
   }

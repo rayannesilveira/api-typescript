@@ -8,12 +8,19 @@ class CreateCategoriasController {
     this.createCategoriaService = createCategoriaService;
   }
 
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { nome, descricao } = request.body;
 
-    this.createCategoriaService.execute({ nome, descricao });
+    const wasCreated = await this.createCategoriaService.execute({ nome, descricao });
 
-    return response.status(201).send();
+    if(wasCreated){
+      return response.status(201).send();
+    }
+    else{
+      return response.status(422).send("Categoria já existe.");
+    }
+
+    
   }
 }
 

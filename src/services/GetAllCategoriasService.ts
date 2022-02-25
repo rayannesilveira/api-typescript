@@ -1,5 +1,6 @@
 import { Categoria } from "../models/Categoria";
 import { ICategoriasRepository } from "../repositories/ICategoriasRepository";
+import mongoose from "mongoose";
 
 
 class GetAllCategoriasService{
@@ -8,8 +9,8 @@ class GetAllCategoriasService{
   constructor(categoriasRepository: ICategoriasRepository){
     this.categoriasRepository = categoriasRepository;
   }
-  execute(): Categoria[] {
-    const categorias = this.categoriasRepository.getAllCategorias();
+  async execute(): Promise<mongoose.Document[]> {
+    const categorias = await this.categoriasRepository.getAllCategorias();
 
     return categorias;
   }

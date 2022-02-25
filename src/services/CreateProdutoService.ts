@@ -4,6 +4,7 @@ interface IRequest{
   nome: string;
   preco: number;
   quantidade:number;
+  categoria_id: string;
 }
 
 class CreateProdutoService {
@@ -14,14 +15,17 @@ class CreateProdutoService {
     this.produtoRepositorio = produtoRepositorio;
   }
 
-  execute({nome, preco, quantidade }: IRequest) {
-    const produtoAlreadyExists = this.produtoRepositorio.findByNome(nome);
+  async execute({nome, preco, quantidade, categoria_id }: IRequest): Promise<boolean> {
+    const produtoAlreadyExists = await this.produtoRepositorio.findByNome(nome);
 
-    if (produtoAlreadyExists) {
-      throw new Error("Produto já existe.");
+    if (produtoAlreadyExists == null) {
+      this.produtoRepositorio.create({ nome, preco, quantidade, categoria_id });
+      return true;
+    }
+    else {
+      return false;
     }
 
-    this.produtoRepositorio.create({ nome, preco, quantidade });
   }
 }
 

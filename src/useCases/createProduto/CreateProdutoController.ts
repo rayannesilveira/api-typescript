@@ -9,12 +9,17 @@ class CreateProdutoController{
     this.createProdutoService = createProdutoService;
   }
 
-  handle(request: Request, response: Response): Response{
-    const { nome, preco, quantidade } = request.body;
+  async handle(request: Request, response: Response): Promise<Response>{
+    const { nome, preco, quantidade, categoria_id } = request.body;
     
-    this.createProdutoService.execute({nome, preco, quantidade });
-    
-    return response.status(201).send("Criado com sucesso.");
+    const wasCreated = await this.createProdutoService.execute({nome, preco, quantidade, categoria_id });
+    if(wasCreated){
+      return response.status(201).send("Criado com sucesso.");
+
+    }
+    else{
+      return response.status(422).send("Não foi possivel cadastrar.");
+    }
   }
 }
 

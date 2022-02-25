@@ -41,6 +41,42 @@
             "description":"Produto já existe."
           }
         }
+      },
+      "get": {
+        "tags": [
+          "Produto"
+        ],
+        "summary": "Listar todos os produtos",
+        "description": "Listar todos os produtos no sistema",
+        "responses": {
+          "200": {
+            "description": "Sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "itens": {
+                    "type": "object",
+                    "properties": {
+                      "nome": {
+                        "type": "string"
+                      },
+                      "preco":{
+                        "type": "number"
+                      },
+                      "quantidade":{
+                        "type": "number"
+                      },
+                      "categoria_id":{
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     
@@ -105,6 +141,46 @@
               }
             }
           }
+        }
+      }
+    },
+    "/categoria/{id}":{
+      "delete": {
+        "tags": [
+          "Categoria"
+        ],
+        "summary": "Deleta uma categoria por id",
+        "description": "Deleta uma categoria por id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400":{
+            "description": "Não deletou.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+          
         }
       }
     }

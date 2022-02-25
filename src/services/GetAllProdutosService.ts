@@ -1,6 +1,5 @@
-import { Produto } from "../models/Produto";
 import { IProdutosRepository } from "../repositories/IProdutosRepository";
-
+import mongoose from "mongoose";
 
 class GetAllProdutosService{
   private produtoRepositorio: IProdutosRepository;
@@ -9,8 +8,8 @@ class GetAllProdutosService{
     this.produtoRepositorio = produtoRepositorio;
   }
 
-  execute(): Produto[]{
-    const produtos = this.produtoRepositorio.getAllProducts();
+  async execute(): Promise<mongoose.Document[]>{
+    const produtos = await this.produtoRepositorio.getAllProducts();
 
     return produtos;
   }

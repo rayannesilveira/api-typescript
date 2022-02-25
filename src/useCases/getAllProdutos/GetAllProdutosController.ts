@@ -9,8 +9,8 @@ class GetAllProdutosController{
     this.getAllProdutosService = getAllProdutosService;
   }
 
-  handle(request: Request, response: Response): Response{
-    const allProdutos = this.getAllProdutosService.execute();
+  async handle(request: Request, response: Response): Promise<Response>{
+    const allProdutos = await this.getAllProdutosService.execute();
 
     return response.status(200).json(allProdutos);
   }

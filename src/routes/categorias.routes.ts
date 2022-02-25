@@ -1,13 +1,8 @@
 import { Router } from "express";
 import { getAllCategoriasController } from "../useCases/getAllCategoriasController";
 import { createCategoriasController } from "../useCases/createCategoria";
-/**
- * Categoria
- * - nome
- * - descricao
- * - created_at
- * - id
- */
+import { updateCategoriasController } from "../useCases/updateCategoria";
+import { deleteCategoriaController } from "../useCases/deleteCategoria";
 
  const categoriasRotas = Router();
 
@@ -18,5 +13,13 @@ import { createCategoriasController } from "../useCases/createCategoria";
  categoriasRotas.post("/", (request, response) => {
    return createCategoriasController.handle(request,response);
  });
+
+ categoriasRotas.put("/:id", (request, response)=>{
+    return updateCategoriasController.handle(request, response);
+  });
+
+  categoriasRotas.delete("/:id", (request, response) => {
+    return deleteCategoriaController.handle(request, response);
+  });
  
  export { categoriasRotas };

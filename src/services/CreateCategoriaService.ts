@@ -13,16 +13,15 @@ class CreateCategoriaService {
   constructor(categoriasRepository: ICategoriasRepository){
     this.categoriasRepository = categoriasRepository;
   }
-  execute({ nome, descricao } : IRequest) {
-    const categoriaAlreadyExists = this.categoriasRepository.findByName(nome);
+  async execute({ nome, descricao } : IRequest): Promise<boolean> {
+    const categoriaAlreadyExists = await this.categoriasRepository.findByName(nome);
 
-    if (categoriaAlreadyExists) {
-     throw new Error("Categoria já existe.");
+    if (categoriaAlreadyExists == null) {
+      this.categoriasRepository.create({ nome, descricao });
+      return true;
     }
     else {
-
-      this.categoriasRepository.create({ nome, descricao });
-
+      return false;
     }
   }
 }
