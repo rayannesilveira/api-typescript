@@ -6,11 +6,14 @@ import mongoose from "mongoose";
 import 'dotenv/config';
 
 import swaggerFile from "./swagger.json";
+import cors from "cors";
 const app = express();
 
 app.listen(3131);
 
 app.use(express.json());
+
+app.use(cors());
 
 mongoose.connect(process.env.DB_CONN_STRING).then(()=>{
   console.log("DB connected!");
