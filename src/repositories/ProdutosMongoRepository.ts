@@ -34,6 +34,8 @@ class ProdutosMongoRepository implements IProdutosRepository{
       quantidade,
       categoria_id
     });
+
+   
   }
 
   async getAllProducts(): Promise<mongoose.Document[]> {

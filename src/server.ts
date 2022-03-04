@@ -12,7 +12,6 @@ const app = express();
 app.listen(3131);
 
 app.use(express.json());
-
 app.use(cors());
 
 mongoose.connect(process.env.DB_CONN_STRING).then(()=>{

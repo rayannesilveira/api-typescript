@@ -1,5 +1,4 @@
 import mongoose, { Document, Schema } from "mongoose";
-import { NIL } from "uuid";
 
 const ProdutoSchema = new Schema(
   {
@@ -11,17 +10,17 @@ const ProdutoSchema = new Schema(
     preco:{
       type: Number,
       required: true,
-      unique: true
+      unique: false
     },
     quantidade:{
       type: Number,
       required: true,
-      unique: true
+      unique: false
     },
     categoria_id:{
       type: String,
       required: true,
-      unique: true
+      unique: false
     }
   }
 );

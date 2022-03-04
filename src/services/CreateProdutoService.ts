@@ -20,6 +20,7 @@ class CreateProdutoService {
 
     if (produtoAlreadyExists == null) {
       this.produtoRepositorio.create({ nome, preco, quantidade, categoria_id });
+
       return true;
     }
     else {

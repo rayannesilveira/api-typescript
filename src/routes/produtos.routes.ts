@@ -10,7 +10,9 @@ produtosRotas.get("/", (request, response)=>{
 });
 
 produtosRotas.post("/", (request, response)=>{
-  return createProdutoController.handle(request, response);
+
+    return createProdutoController.handle(request, response);
+ 
 });
 
 export { produtosRotas };
